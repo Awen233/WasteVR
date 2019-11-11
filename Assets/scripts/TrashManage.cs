@@ -21,7 +21,11 @@ public class TrashManage : MonoBehaviour
 
     public void putOne()
     {
-        if(index >= trashes.Count)
+        if(index != 0)
+        {
+            trashes[index - 1].SetActive(false);
+        } 
+        if (index >= trashes.Count)
         {
             return;
         }
