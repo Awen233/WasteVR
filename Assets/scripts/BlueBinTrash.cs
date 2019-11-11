@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cubeTest : MonoBehaviour
+public class BlueBinTrash : MonoBehaviour
 {
+
     Rigidbody rigidBody;
     Vector3 initialPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        print("start");
         rigidBody = GetComponent<Rigidbody>();
-        initialPosition = rigidBody.position;
-        resetPosition();
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -24,23 +23,22 @@ public class cubeTest : MonoBehaviour
 
     void resetPosition()
     {
-        print("lets reset the position");
-        rigidBody.position = initialPosition;
+        print("trash reset the position");
+        transform.position = initialPosition;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        print("collsion happen");
         string tags = collision.gameObject.tag;
-        if(tags == "ground")
+        if (tags == "ground")
         {
-            print("we collide with ground");
             resetPosition();
-        } 
-        else
+        } else if(tags ==  "blueBin") {
+            TrashManage tm = transform.parent.gameObject.GetComponent<TrashManage>();
+            tm.putOne();
+        } else if(tags == "organBin")
         {
-            print("nothing happen");
+            resetPosition();
         }
     }
-
 }
