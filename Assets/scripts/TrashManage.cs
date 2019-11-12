@@ -6,11 +6,17 @@ public class TrashManage : MonoBehaviour
 {
     List<GameObject> trashes;
     int index = 0;
+    [SerializeField] float speed = 5.0f;
+    [SerializeField] Vector3 targetPosition;
+    Vector3 initialPosition;
+    Vector3 origin;
+    int current;
 
     // Start is called before the first frame update
     void Start()
     {
         trashes = new List<GameObject>();
+        origin = transform.position;
         foreach (Transform child in transform)
         {
             trashes.Add(child.gameObject);
@@ -30,12 +36,16 @@ public class TrashManage : MonoBehaviour
             return;
         }
         trashes[index].SetActive(true);
+        initialPosition = trashes[index].transform.position;
+        print(initialPosition);
+        current = index;
         index++;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        trashes[current].transform.position = Vector3.MoveTowards(initialPosition, targetPosition + origin, Time.deltaTime * speed);
+        initialPosition = trashes[current].transform.position;
     }
 }
