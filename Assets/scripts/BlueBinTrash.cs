@@ -27,7 +27,8 @@ public class BlueBinTrash : MonoBehaviour
     void resetPosition()
     {
         print("trash reset the position");
-        transform.position = initialPosition;
+        TrashManage pare = transform.parent.GetComponent<TrashManage>();
+        transform.position = pare.getInitial();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -50,23 +51,6 @@ public class BlueBinTrash : MonoBehaviour
             resetPosition();
         }
     }
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if(rightBin == false || grabScript.isGrabbed)
-    //    {
-    //        return; 
-    //    }
-    //    if(touchTime >= 3)
-    //    {
-    //        TrashManage tm = transform.parent.gameObject.GetComponent<TrashManage>();
-    //        tm.putOne();
-    //    } else
-    //    {
-    //        touchTime += buildTime * Time.deltaTime;
-    //    }
-
-    //}
 
     private void OnCollisionExit(Collision collision)
     {

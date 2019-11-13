@@ -11,6 +11,7 @@ public class TrashManage : MonoBehaviour
     Vector3 initialPosition;
     Vector3 origin;
     int current;
+    bool update;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class TrashManage : MonoBehaviour
             trashes.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
+        
         putOne();
     }
 
@@ -35,6 +37,7 @@ public class TrashManage : MonoBehaviour
         {
             return;
         }
+        update = true;
         trashes[index].SetActive(true);
         initialPosition = trashes[index].transform.position;
         print(initialPosition);
@@ -45,7 +48,21 @@ public class TrashManage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trashes[current].transform.position = Vector3.MoveTowards(initialPosition, targetPosition + origin, Time.deltaTime * speed);
-        initialPosition = trashes[current].transform.position;
+        print(update);
+        if(initialPosition.magnitude - (targetPosition + origin).magnitude <= 0.01)
+        {
+            update = false;
+        }
+        if (update)
+        {
+            trashes[current].transform.position = Vector3.MoveTowards(initialPosition, targetPosition + origin, Time.deltaTime * speed);
+            initialPosition = trashes[current].transform.position;
+        }
+        
+    }
+
+    public Vector3 getInitial()
+    {
+        return targetPosition + origin;
     }
 }
