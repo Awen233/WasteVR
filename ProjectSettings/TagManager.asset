@@ -9,6 +9,7 @@ TagManager:
   - trashs
   - blueBin
   - organBin
+  - blueBinTrash
   layers:
   - Default
   - TransparentFX

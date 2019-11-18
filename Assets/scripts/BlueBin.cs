@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class BlueBin : MonoBehaviour
 {
+    Transform particle;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        particle = transform.Find("particuleCube");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void OnCollisionEnter(Collision collision)
     {
         string tags = collision.gameObject.tag;
-        if (tags == "blue")
+        if (tags == "blueBinTrash")
         {
-            print("you put it correct");
-        }
-        else
-        {
-            print("you put it wrong");
+            print("correct");
+            testPar test = particle.gameObject.GetComponent<testPar>();
+            test.playParticle();
         }
     }
 }

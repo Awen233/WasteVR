@@ -23,16 +23,17 @@ public class TrashManage : MonoBehaviour
             trashes.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
-        
+        randomization();
         putOne();
     }
 
     public void putOne()
     {
-        if(index != 0)
-        {
-            trashes[index - 1].SetActive(false);
-        } 
+        print("started");
+        //if(index != 0)
+        //{
+        //    trashes[index - 1].SetActive(false);
+        //} 
         if (index >= trashes.Count)
         {
             return;
@@ -40,7 +41,7 @@ public class TrashManage : MonoBehaviour
         update = true;
         trashes[index].SetActive(true);
         initialPosition = trashes[index].transform.position;
-        print(initialPosition);
+
         current = index;
         index++;
     }
@@ -48,7 +49,7 @@ public class TrashManage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(update);
+   //     print(update);
         if(initialPosition.magnitude - (targetPosition + origin).magnitude <= 0.01)
         {
             update = false;
@@ -64,5 +65,23 @@ public class TrashManage : MonoBehaviour
     public Vector3 getInitial()
     {
         return targetPosition + origin;
+    }
+
+    void randomization()
+    {
+        for(int i = 0; i < trashes.Count; i++)
+        {
+            int randomIndex = Random.Range(i, trashes.Count);
+            GameObject temp = trashes[i];
+            trashes[i] = trashes[randomIndex];
+            trashes[randomIndex] = temp;
+        }       
+    }
+
+    void showMenu()
+    {
+        Transform tf = transform.Find("MenuRoot");
+        MenuAppear menu = tf.gameObject.GetComponent<MenuAppear>();
+        menu.showMenu(); 
     }
 }
