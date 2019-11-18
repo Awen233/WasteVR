@@ -5,17 +5,10 @@ using UnityEngine;
 public class BlueBinTrash : MonoBehaviour
 {
 
-    Rigidbody rigidBody;
-    Vector3 initialPosition;
-    float touchTime = 0.0f;
-    float buildTime = 1.0f;
-    bool  rightBin = false;
     OVRGrabbable grabScript;
 
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
-        initialPosition = transform.position;
         grabScript = GetComponent<OVRGrabbable>(); 
     }
 
@@ -26,47 +19,31 @@ public class BlueBinTrash : MonoBehaviour
 
     void resetPosition()
     {
-        print("trash reset the position");
         TrashManage pare = transform.parent.GetComponent<TrashManage>();
         transform.position = pare.getInitial();
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        
         if (grabScript.isGrabbed)
         {
             return;
         }
+        TrashManage tm = transform.parent.gameObject.GetComponent<TrashManage>();
         string tags = collision.gameObject.tag;
         if (tags == "ground")
         {
-            resetState();
+            tm.playFailAudio();
             resetPosition();
         } else if(tags ==  "blueBin") {
-            TrashManage tm = transform.parent.gameObject.GetComponent<TrashManage>();
+            
+            tm.PlaySuccessAudio();
             tm.putOne();
         } else if(tags == "organBin")
         {
-            resetState();
+            tm.playFailAudio();
             resetPosition();
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (rightBin)
-        {
-            resetState(); 
-        }
-    }
-
-    void resetState()
-    {
-        touchTime = 0.0f;
-        buildTime = 1.0f;
-        rightBin = false;
-    }
-
-    
-
 }

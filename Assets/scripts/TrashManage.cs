@@ -13,9 +13,14 @@ public class TrashManage : MonoBehaviour
     int current;
     bool update;
 
+    public AudioClip successAudio;
+    public AudioClip failAudio;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         trashes = new List<GameObject>();
         origin = transform.position;
         foreach (Transform child in transform)
@@ -78,5 +83,15 @@ public class TrashManage : MonoBehaviour
             trashes[i] = trashes[randomIndex];
             trashes[randomIndex] = temp;
         }       
+    }
+
+    public void PlaySuccessAudio()
+    {
+        audioSource.PlayOneShot(successAudio, 1.0f);
+    }
+
+    public void playFailAudio()
+    {
+        audioSource.PlayOneShot(failAudio, 1.0f);
     }
 }
