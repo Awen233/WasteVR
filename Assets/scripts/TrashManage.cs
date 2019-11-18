@@ -33,9 +33,11 @@ public class TrashManage : MonoBehaviour
         //if(index != 0)
         //{
         //    trashes[index - 1].SetActive(false);
-        //} 
-        if (index >= trashes.Count)
+        //}
+        print(index >= trashes.Count);
+        if (index >= trashes.Count - 1)
         {
+            trashes[index].SetActive(true);
             return;
         }
         update = true;
@@ -69,19 +71,12 @@ public class TrashManage : MonoBehaviour
 
     void randomization()
     {
-        for(int i = 0; i < trashes.Count; i++)
+        for(int i = 0; i < trashes.Count - 1; i++)
         {
-            int randomIndex = Random.Range(i, trashes.Count);
+            int randomIndex = Random.Range(i, trashes.Count - 1);
             GameObject temp = trashes[i];
             trashes[i] = trashes[randomIndex];
             trashes[randomIndex] = temp;
         }       
-    }
-
-    void showMenu()
-    {
-        Transform tf = transform.Find("MenuRoot");
-        MenuAppear menu = tf.gameObject.GetComponent<MenuAppear>();
-        menu.showMenu(); 
     }
 }

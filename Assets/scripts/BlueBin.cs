@@ -23,8 +23,13 @@ public class BlueBin : MonoBehaviour
         if (tags == "blueBinTrash")
         {
             print("correct");
-            testPar test = particle.gameObject.GetComponent<testPar>();
-            test.playParticle();
+            Invoke("playParticle", 1);
         }
+    }
+
+    void playParticle()
+    {
+        testPar test = particle.gameObject.GetComponent<testPar>();
+        test.playParticle();
     }
 }
