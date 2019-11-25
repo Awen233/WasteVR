@@ -28,18 +28,16 @@ public class TrashManage : MonoBehaviour
             trashes.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
-        randomization();
-        putOne();
+        Randomization();
+        PutOne();
     }
 
-    public void putOne()
+    public void PutOne()
     {
-        print("started");
         //if(index != 0)
         //{
         //    trashes[index - 1].SetActive(false);
         //}
-        print(index >= trashes.Count);
         if (index >= trashes.Count - 1)
         {
             trashes[index].SetActive(true);
@@ -48,7 +46,6 @@ public class TrashManage : MonoBehaviour
         update = true;
         trashes[index].SetActive(true);
         initialPosition = trashes[index].transform.position;
-
         current = index;
         index++;
     }
@@ -56,7 +53,6 @@ public class TrashManage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   //     print(update);
         if(initialPosition.magnitude - (targetPosition + origin).magnitude <= 0.01)
         {
             update = false;
@@ -66,7 +62,6 @@ public class TrashManage : MonoBehaviour
             trashes[current].transform.position = Vector3.MoveTowards(initialPosition, targetPosition + origin, Time.deltaTime * speed);
             initialPosition = trashes[current].transform.position;
         }
-        
     }
 
     public Vector3 getInitial()
@@ -74,7 +69,7 @@ public class TrashManage : MonoBehaviour
         return targetPosition + origin;
     }
 
-    void randomization()
+    void Randomization()
     {
         for(int i = 0; i < trashes.Count - 1; i++)
         {

@@ -6,9 +6,11 @@ public class BlueBinTrash : MonoBehaviour
 {
 
     OVRGrabbable grabScript;
+    bool putted;
 
     void Start()
     {
+        putted = false; 
         grabScript = GetComponent<OVRGrabbable>(); 
     }
 
@@ -17,7 +19,7 @@ public class BlueBinTrash : MonoBehaviour
         
     }
 
-    void resetPosition()
+    void ResetPosition()
     {
         TrashManage pare = transform.parent.GetComponent<TrashManage>();
         transform.position = pare.getInitial();
@@ -30,20 +32,25 @@ public class BlueBinTrash : MonoBehaviour
         {
             return;
         }
+        if (putted)
+        {
+            return;
+        }
+
         TrashManage tm = transform.parent.gameObject.GetComponent<TrashManage>();
         string tags = collision.gameObject.tag;
         if (tags == "ground")
         {
             tm.playFailAudio();
-            resetPosition();
+            ResetPosition();
         } else if(tags ==  "blueBin") {
-            
+            putted = true;
             tm.PlaySuccessAudio();
-            tm.putOne();
+            tm.PutOne();
         } else if(tags == "organBin")
         {
             tm.playFailAudio();
-            resetPosition();
+            ResetPosition();
         }
     }
 }
