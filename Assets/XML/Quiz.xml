@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QuizCollection>
+  <Quizzes>
+    <Quiz QuizProblem = "How many hours of continuing education must MRF/Transfer Station Operators obtain to maintain their training in Florida?
+a.	24
+b.	16
+c.	10
+d.	8
+">
+      <Index>1</Index>
+      <Choice_Number>4</Choice_Number>
+      <Correct_Answer>'d'</Correct_Answer>
+    </Quiz>
+  </Quizzes>
+</QuizCollection>

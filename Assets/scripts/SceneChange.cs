@@ -19,7 +19,7 @@ public class SceneChange : MonoBehaviour
 
     public void playSortingScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 }
