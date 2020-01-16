@@ -17,9 +17,12 @@ public class TrashManage : MonoBehaviour
     public AudioClip failAudio;
     AudioSource audioSource;
 
+    ScoreBoard scoreBoard;
+
     // Start is called before the first frame update
     void Start()
     {
+        print("hello world");
         audioSource = GetComponent<AudioSource>();
         trashes = new List<GameObject>();
         origin = transform.position;
@@ -29,6 +32,7 @@ public class TrashManage : MonoBehaviour
             child.gameObject.SetActive(false);
         }
         Randomization();
+        SetScoreBoard();
         PutOne();
     }
 
@@ -80,6 +84,11 @@ public class TrashManage : MonoBehaviour
         }       
     }
 
+    public int GetNumberOfTrash()
+    {
+        return trashes.Count - 1; 
+    }
+
     public void PlaySuccessAudio()
     {
         audioSource.PlayOneShot(successAudio, 1.0f);
@@ -88,5 +97,26 @@ public class TrashManage : MonoBehaviour
     public void playFailAudio()
     {
         audioSource.PlayOneShot(failAudio, 1.0f);
+    }
+
+
+    public void SetScoreBoard()
+    {
+        trashes[trashes.Count - 1].SetActive(true);
+        scoreBoard = trashes[trashes.Count - 1].GetComponent<ScoreBoard>();
+        scoreBoard.SetNumberOfTrashes(trashes.Count - 1);
+        scoreBoard.SetText();
+    }
+
+    public void PutWrong()
+    {
+        scoreBoard.PutWrong();
+        playFailAudio();
+    }
+
+    public void PutCorrect()
+    {
+        scoreBoard.PutCorrect();
+        PlaySuccessAudio();
     }
 }

@@ -10,13 +10,13 @@ public class BlueBinTrash : MonoBehaviour
 
     void Start()
     {
-        putted = false; 
-        grabScript = GetComponent<OVRGrabbable>(); 
+        putted = false;
+        grabScript = GetComponent<OVRGrabbable>();
     }
 
     void Update()
     {
-        
+
     }
 
     void ResetPosition()
@@ -27,7 +27,7 @@ public class BlueBinTrash : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        
+
         if (grabScript.isGrabbed)
         {
             return;
@@ -43,14 +43,18 @@ public class BlueBinTrash : MonoBehaviour
         {
             tm.playFailAudio();
             ResetPosition();
-        } else if(tags ==  "blueBin") {
-            putted = true;
-            tm.PlaySuccessAudio();
-            tm.PutOne();
-        } else if(tags == "organBin")
+        }
+        else if (tags == "blueBin")
         {
-            tm.playFailAudio();
+            putted = true;
+            tm.PutCorrect();
+            tm.PutOne();
+        }
+        else if (tags == "organBin")
+        {
+            tm.PutWrong();
             ResetPosition();
         }
     }
 }
+

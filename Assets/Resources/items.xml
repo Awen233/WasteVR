@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ItemCollection>
+  <Items>
+    <Item question="How many hours of continuing education must MRF/Transfer Station Operators obtain to maintain their training in Florida?
+a.	24
+b.	16
+c.	10
+d.	8">
+      <indexNum>1</indexNum>
+      <choiceNum>4</choiceNum>
+      <correctAnswer>d</correctAnswer>
+    </Item>
+    <Item question="How frequently must Florida MRF/Transfer Station Operators obtain their required continuing education hours? 
+a.	Every 5 years
+b.	Every 4 years
+c.	Every 3 years
+d.	Every 1 year">
+      <indexNum>2</indexNum>
+      <choiceNum>4</choiceNum>
+      <correctAnswer>c</correctAnswer>
+    </Item>
+    <Item question="True or False:  The State of Florida allows you to have a grace period to obtain your continuing education hours, even if you do not obtain your required hours before your training expiration date. 
+a.	True
+b.	False">
+      <indexNum>3</indexNum>
+      <choiceNum>2</choiceNum>
+      <correctAnswer>b</correctAnswer>
+    </Item>
+    <Item question="What is the most common method of municipal waste management in the United States?
+a.	Landfilling
+b.	Recycling
+c.	Composting">
+      <indexNum>4</indexNum>
+      <choiceNum>3</choiceNum>
+      <correctAnswer>a</correctAnswer>
+    </Item>
+    <Item question="True or False:  Nuclear waste materials are also considered to be MSW or Class I waste under Florida regulations
+a.	True
+b.	False">
+      <indexNum>5</indexNum>
+      <choiceNum>2</choiceNum>
+      <correctAnswer>b</correctAnswer>
+    </Item>
+    <Item question="True or False: One reason that some wastes are prohibited from being accepted at waste facilities is that they may pose a safety hazard to on-site workers.
+a.	True
+b.	False">
+      <indexNum>6</indexNum>
+      <choiceNum>2</choiceNum>
+      <correctAnswer>a</correctAnswer>
+    </Item>
+    <Item question="Which of the following is NOT a reason to screen prohibited wastes at solid waste facilities?
+a.	Environmental Protection
+b.	Maintain worker safety
+c.	Waste screening is required by Florida DEP regulations
+d.	All of the above are good reasons to screen prohibited wastes">
+      <indexNum>7</indexNum>
+      <choiceNum>4</choiceNum>
+      <correctAnswer>d</correctAnswer>
+    </Item>
+    <Item question="True or False: Leachate is produced when liquid contacts, drains through, or emerges from solid waste.
+a.	True
+b.	False">
+      <indexNum>8</indexNum>
+      <choiceNum>2</choiceNum>
+      <correctAnswer>a</correctAnswer>
+    </Item>
+    <Item question="Which of the following activities can create construction and demolition (C and D) debris?
+a.	Construction of a building
+b.	Renovation of a building
+c.	Demolition of a building
+d.	Maintenance of roads or bridges
+e.	All of the above activities create construction and demolition debris. ">
+      <indexNum>9</indexNum>
+      <choiceNum>5</choiceNum>
+      <correctAnswer>e</correctAnswer>
+    </Item>
+    <Item question="Why is asbestos testing often required before recycling asphalt shingles?
+a.	We always recycle asbestos
+b.	Asbestos is an important ingredient in new roads
+c.	Grinding asbestos-containing materials can negatively impact worker safety and could be a violation of regulations, so we test for asbestos to make sure it isn’t in the asphalt shingles
+d.	Asbestos is never contained within roofing materials
+">
+      <indexNum>10</indexNum>
+      <choiceNum>4</choiceNum>
+      <correctAnswer>c</correctAnswer>
+    </Item>
+    <!--<Item name="Axe">
+      <Damage>60</Damage>
+      <Durability>90</Durability>
+    </Item>
+    <Item name="Hammer">
+      <Damage>150</Damage>
+      <Durability>70</Durability>
+    </Item>-->
+  </Items>
+</ItemCollection>
