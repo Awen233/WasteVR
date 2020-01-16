@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrashManage : MonoBehaviour
 {
@@ -22,7 +23,11 @@ public class TrashManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.LoadScene(1);
+
+
         print("hello world");
+
         audioSource = GetComponent<AudioSource>();
         trashes = new List<GameObject>();
         origin = transform.position;

@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Quiz.unity
-    guid: ad94f239b05d7a841b1854d2739fa533
   - enabled: 1
     path: Assets/Scenes/sortingScene.unity
     guid: a057de072da87478ab301264e1c0f2bd
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: daccba1b0edc942a8878db0a0b78ee5c
   m_configObjects: {}
