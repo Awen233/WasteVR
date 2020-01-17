@@ -23,9 +23,6 @@ public class TrashManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.LoadScene(1);
-
-
         print("hello world");
 
         audioSource = GetComponent<AudioSource>();
