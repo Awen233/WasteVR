@@ -10,6 +10,9 @@ TagManager:
   - blueBin
   - organBin
   - blueBinTrash
+  - organBinTrash
+  - blackBin
+  - blackBinTrash
   layers:
   - Default
   - TransparentFX

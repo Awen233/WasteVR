@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueBinTrash : MonoBehaviour
+public class OrangeBinTrash : MonoBehaviour
 {
-
     OVRGrabbable grabScript;
     bool putted;
 
@@ -44,17 +43,16 @@ public class BlueBinTrash : MonoBehaviour
             tm.playFailAudio();
             ResetPosition();
         }
-        else if (tags == "blueBin")
+        else if (tags == "organBin") 
         {
             putted = true;
             tm.PutCorrect();
             tm.PutOne();
         }
-        else if (tags == "organBin" || tags == "blackBin")
+        else if (tags == "blackBin" || tags == "blueBin")
         {
             tm.PutWrong();
             ResetPosition();
         }
     }
 }
-
