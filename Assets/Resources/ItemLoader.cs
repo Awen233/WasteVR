@@ -5,18 +5,19 @@ public class ItemLoader : MonoBehaviour {
 
     public const string path = "items";
 
-    /*public string ques = "";
-    public float index = -1f;
-    public float choiceNum = -1f;
-    public string correct = "";*/
+    public const int numSize = 10;//modify this when modifying the number of questions
 
-    public static string[] quesArr = new string[10];
-    public static float[] indexArr = new float[10];
-    public static float[] choiceArr = new float[10];
-    public static string[] correctArr = new string[10];
+    public static string[] quesArr = new string[numSize];
+    public static float[] indexArr = new float[numSize];
+    public static float[] choiceArr = new float[numSize];
+    public static string[] correctArr = new string[numSize];
+    public static string[] a = new string[numSize];
+    public static string[] b = new string[numSize];
+    public static string[] c = new string[numSize];
+    public static string[] d = new string[numSize];
+    public static string[] e = new string[numSize];
 
 
-	// Use this for initialization
 	void Start () 
     {
         ItemContainer ic = ItemContainer.Load(path);
@@ -24,11 +25,12 @@ public class ItemLoader : MonoBehaviour {
 
         foreach (Item item in ic.items)
         {
-            //print(item.question);
-            //print(item.indexNum);
-            //print(item.choiceNum);
-            //print(item.correctAnswer);
-            //Debug.Log(item.question);
+            a[counter] = item.a;
+            b[counter] = item.b;
+            c[counter] = item.c;
+            d[counter] = item.d;
+            e[counter] = item.e;
+
             quesArr[counter] = item.question;
             indexArr[counter] = item.indexNum;
             choiceArr[counter] = item.choiceNum;
