@@ -14,22 +14,14 @@ public class ScoreBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attempts = 0;
-        failTime = 0;
-        sortedTrash = 0;
-        //unsortedTrash = 5;
+        
     }
 
     public void PutCorrect()
     {
-        print("inside put Correct");
-        print("aatempts " + attempts);
         attempts++;
-        print("sorted " + sortedTrash);
         sortedTrash++;
-        print("unsorted trash " + unsortedTrash);
         unsortedTrash -= 1;
-        print("unsorted trash after -- " + unsortedTrash);
         SetText();
     }
 
@@ -46,15 +38,14 @@ public class ScoreBoard : MonoBehaviour
         {
             return 0.0f;
         }
-        return sortedTrash / attempts;
+        return ((float)sortedTrash)/attempts;
     }
 
     public void SetText()
     {
         float rate = CalculateSuccessRate();
 
-        print("inside set Text ");
-        print("unsorted trash " + unsortedTrash);
+
 
         text.text =
             "success rate: " + rate + "\n"

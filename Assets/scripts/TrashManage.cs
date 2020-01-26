@@ -54,21 +54,31 @@ public class TrashManage : MonoBehaviour
             trashes[index].SetActive(true);
             return;
         }
-        update = true;
+        
         trashes[index].SetActive(true);
+        Invoke("StartMoving", 1);
+        
+    }
+
+    void StartMoving()
+    {
+        update = true;
         initialPosition = trashes[index].transform.position;
-        targetPosition = new  Vector3(initialPosition.x + 1.8f, initialPosition.y, initialPosition.z) ;
-        print("first initial positions: " + initialPosition);
-        print("last target positions: " + targetPosition);
-       
+        targetPosition = new Vector3(initialPosition.x + 1.8f, initialPosition.y, initialPosition.z);
+        //print("first initial positions: " + initialPosition);
+        //print("last target positions: " + targetPosition);
+
         current = index;
         currentPosition = trashes[current].transform.position;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(update == false)
+        {
+            return;
+        }
         if (currentPosition.magnitude - targetPosition.magnitude <= 0.01)
         {
             update = false;
