@@ -2979,6 +2979,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Belt+conveyor
       objectReference: {fileID: 0}
+    - target: {fileID: 3309079259791468770, guid: 65dbbe07ed3244060b235cd1fa35399b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745500587617235134, guid: 65dbbe07ed3244060b235cd1fa35399b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 65dbbe07ed3244060b235cd1fa35399b,
         type: 3}
       propertyPath: m_LocalPosition.x
