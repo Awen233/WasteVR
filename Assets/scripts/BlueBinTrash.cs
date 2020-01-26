@@ -12,6 +12,7 @@ public class BlueBinTrash : MonoBehaviour
     {
         putted = false;
         grabScript = GetComponent<OVRGrabbable>();
+        print("the grabScript is : " + grabScript);
     }
 
     void Update()
@@ -49,12 +50,18 @@ public class BlueBinTrash : MonoBehaviour
             putted = true;
             tm.PutCorrect();
             tm.PutOne();
+            Invoke("SelfDestruct", 7);
         }
         else if (tags == "organBin" || tags == "blackBin")
         {
             tm.PutWrong();
             ResetPosition();
         }
+    }
+
+    void SelfDestruct()
+    {
+        gameObject.SetActive(false);
     }
 }
 

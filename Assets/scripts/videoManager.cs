@@ -31,7 +31,7 @@ public class videoManager : MonoBehaviour
 
         videoPlayer.Stop();
        
-       videoPlayer.clip = videoClips[i];
+        videoPlayer.clip = videoClips[i];
         videoPlayer.Play();
 
         GameObject signal = GameObject.Find("CurrentVid");

@@ -7,24 +7,29 @@ public class ScoreBoard : MonoBehaviour
 {
     int attempts;
     int failTime;
-    int unsortedTrash;
+    public int unsortedTrash;
     int sortedTrash;
-    [SerializeField] Text text;
+    public Text text;
 
     // Start is called before the first frame update
     void Start()
     {
         attempts = 0;
         failTime = 0;
-        unsortedTrash = 0;
         sortedTrash = 0;
+        //unsortedTrash = 5;
     }
 
     public void PutCorrect()
     {
+        print("inside put Correct");
+        print("aatempts " + attempts);
         attempts++;
+        print("sorted " + sortedTrash);
         sortedTrash++;
-        unsortedTrash--;
+        print("unsorted trash " + unsortedTrash);
+        unsortedTrash -= 1;
+        print("unsorted trash after -- " + unsortedTrash);
         SetText();
     }
 
@@ -44,14 +49,12 @@ public class ScoreBoard : MonoBehaviour
         return sortedTrash / attempts;
     }
 
-    public void SetNumberOfTrashes(int num)
-    {
-        unsortedTrash = num;
-    }
-
     public void SetText()
     {
         float rate = CalculateSuccessRate();
+
+        print("inside set Text ");
+        print("unsorted trash " + unsortedTrash);
 
         text.text =
             "success rate: " + rate + "\n"

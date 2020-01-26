@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 public class TrashManage : MonoBehaviour
 {
     List<GameObject> trashes;
-    int index = 0;
+    int index = -1;
     [SerializeField] float speed = 5.0f;
-    [SerializeField] Vector3 targetPosition;
+    Vector3 targetPosition;
     Vector3 initialPosition;
-    Vector3 origin;
+    //Vector3 origin;
     int current;
     bool update;
+    int distance = 2;
+    Vector3 currentPosition;
+
 
     public AudioClip successAudio;
     public AudioClip failAudio;
@@ -27,7 +30,7 @@ public class TrashManage : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         trashes = new List<GameObject>();
-        origin = transform.position;
+        //origin = transform.position;
         foreach (Transform child in transform)
         {
             trashes.Add(child.gameObject);
@@ -36,6 +39,7 @@ public class TrashManage : MonoBehaviour
         Randomization();
         SetScoreBoard();
         PutOne();
+        //InvoteMethod();
     }
 
     public void PutOne()
@@ -44,6 +48,7 @@ public class TrashManage : MonoBehaviour
         //{
         //    trashes[index - 1].SetActive(false);
         //}
+        index++;
         if (index >= trashes.Count - 1)
         {
             trashes[index].SetActive(true);
@@ -52,27 +57,37 @@ public class TrashManage : MonoBehaviour
         update = true;
         trashes[index].SetActive(true);
         initialPosition = trashes[index].transform.position;
+        targetPosition = new  Vector3(initialPosition.x + 1.8f, initialPosition.y, initialPosition.z) ;
+        print("first initial positions: " + initialPosition);
+        print("last target positions: " + targetPosition);
+       
         current = index;
-        index++;
+        currentPosition = trashes[current].transform.position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(initialPosition.magnitude - (targetPosition + origin).magnitude <= 0.01)
+        if (currentPosition.magnitude - targetPosition.magnitude <= 0.01)
         {
             update = false;
         }
         if (update)
         {
-            trashes[current].transform.position = Vector3.MoveTowards(initialPosition, targetPosition + origin, Time.deltaTime * speed);
-            initialPosition = trashes[current].transform.position;
+            currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.deltaTime * speed);
+            trashes[current].transform.position = currentPosition;
         }
+    }
+
+    public void InvoteMethod()
+    {
+        Invoke("PutCorrect", 5);
     }
 
     public Vector3 getInitial()
     {
-        return targetPosition + origin;
+        return targetPosition;
     }
 
     void Randomization()
@@ -106,7 +121,7 @@ public class TrashManage : MonoBehaviour
     {
         trashes[trashes.Count - 1].SetActive(true);
         scoreBoard = trashes[trashes.Count - 1].GetComponent<ScoreBoard>();
-        scoreBoard.SetNumberOfTrashes(trashes.Count - 1);
+        scoreBoard.unsortedTrash = trashes.Count - 1;
         scoreBoard.SetText();
     }
 
