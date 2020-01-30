@@ -36,7 +36,7 @@ public class TrashManage : MonoBehaviour
             trashes.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
-        Randomization();
+      //  Randomization();
         SetScoreBoard();
         PutOne();
         //InvoteMethod();
