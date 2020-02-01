@@ -126,13 +126,14 @@ public class TrashManage : MonoBehaviour
         audioSource.PlayOneShot(failAudio, 1.0f);
     }
 
-
     public void SetScoreBoard()
     {
         trashes[trashes.Count - 1].SetActive(true);
         scoreBoard = trashes[trashes.Count - 1].GetComponent<ScoreBoard>();
         scoreBoard.unsortedTrash = trashes.Count - 1;
-        scoreBoard.SetText();
+        scoreBoard.SetUnsortedText();
+        scoreBoard.SetSortedText();
+        scoreBoard.SetFailTimeText();
     }
 
     public void PutWrong()
