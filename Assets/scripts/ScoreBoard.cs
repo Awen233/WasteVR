@@ -9,7 +9,9 @@ public class ScoreBoard : MonoBehaviour
     int failTime;
     public int unsortedTrash;
     int sortedTrash;
-    public Text text;
+    public Text unsortedText;
+    public Text sortedText;
+    public Text failTimeText;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,16 @@ public class ScoreBoard : MonoBehaviour
     {
         attempts++;
         sortedTrash++;
+        SetSortedText();
         unsortedTrash -= 1;
-        SetText();
+        SetUnsortedText();
     }
 
     public void PutWrong()
     {
         attempts++;
         failTime++;
-        SetText();
+        SetFailTimeText();
     }
 
     private float CalculateSuccessRate()
@@ -41,16 +44,27 @@ public class ScoreBoard : MonoBehaviour
         return ((float)sortedTrash)/attempts;
     }
 
-    public void SetText()
+    public void SetUnsortedText()
     {
         float rate = CalculateSuccessRate();
 
+        unsortedText.text = unsortedTrash.ToString();
 
-
-        text.text =
+        /*text.text =
             "success rate: " + rate + "\n"
             + "number of times failure: " + failTime + "\n"
             + "number of unsorted trash: " + unsortedTrash + "\n"
             + "number of sorted trash: " + sortedTrash;
+        */
+    }
+
+    public void SetSortedText()
+    {
+        sortedText.text = sortedTrash.ToString();
+    }
+
+    public void SetFailTimeText()
+    {
+        failTimeText.text = failTime.ToString();
     }
 }
